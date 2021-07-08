@@ -4,7 +4,7 @@ import java.util.Set;
 
 public class Tests extends junit.framework.TestCase {
 
-    public void test1(question3.Factory/* à compléter */f) throws Exception {
+    public void test1(question3.Factory<Set>f) throws Exception {
         Set<Integer> set = f.create();
         for (int i = 20; i > 0; i--)
             set.add(i);
@@ -19,6 +19,17 @@ public class Tests extends junit.framework.TestCase {
         } catch (Exception e) {
             fail(" exception inattendue : " + e.getMessage());
         }
+    }
+    public void testCompare()
+    {
+        Set<Integer> tsf=new TreeSetFactory<Integer>().create();
+        Set<Integer> hsf=new HashSetFactory<Integer>().create();
+        
+        tsf.add(3);
+        hsf.add(2);
+        
+        //tsf.compareTo(hsf);
+    
     }
 
 }

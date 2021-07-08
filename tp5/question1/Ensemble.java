@@ -4,44 +4,51 @@ import java.util.*;
 
 public class Ensemble<T> extends AbstractSet<T> {
 
-	protected java.util.Vector<T> table = new java.util.Vector<T>();
+    protected java.util.Vector<T> table = new java.util.Vector<T>();
 
-	public int size() {
-		return table.size();
-	}
+    public int size() {
+        return table.size();
+    }
 
-	public Iterator<T> iterator() {
-		return table.iterator();
-	}
+    public Iterator<T> iterator() {
+        return table.iterator();
+    }
 
-	public boolean add(T t) {
-		// à compléter pour la question1-1
+    public boolean add(T t) {
+        return table.add(t);
+    }
 
-		return false;
-	}
+    public Ensemble<T> union(Ensemble<? extends T> e) {
+        Ensemble<T> e1=this;
+        Set<T> set = new HashSet<T>();
 
-	public Ensemble<T> union(Ensemble<? extends T> e) {
-		// à compléter pour la question1-2
+        set.addAll(e1);
+        set.addAll(e);
+        e1.clear();
+        e1.addAll(set);
 
-		return null;
-	}
+        return e1;
+    }
 
-	public Ensemble<T> inter(Ensemble<? extends T> e) {
-		// à compléter pour la question1-2
+    public Ensemble<T> inter(Ensemble<? extends T> e) {
+        Ensemble<T> e1=this;
+        e1.retainAll(e);
+        return e1;
+    }
 
-		return null;
-	}
+    public Ensemble<T> diff(Ensemble<? extends T> e) {
+        Ensemble<T> e1=this;
+        e1.union(e).removeAll(e);
+        return e1;
+    }
 
-	public Ensemble<T> diff(Ensemble<? extends T> e) {
-		// à compléter pour la question1-2
-
-		return null;
-	}
-
-	Ensemble<T> diffSym(Ensemble<? extends T> e) {
-		// à compléter pour la question1-2
-
-		return null;
-	}
-	
+    Ensemble<T> diffSym(Ensemble<? extends T> e) {
+        Ensemble<T> e1=this;
+        Ensemble<T> e2=this;
+        e2.inter(e);
+        e1.union(e);
+        e1.removeAll(e2);
+        return e1;
+    }
+    
 }

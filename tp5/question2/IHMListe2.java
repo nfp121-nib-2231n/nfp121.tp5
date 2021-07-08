@@ -17,5 +17,6 @@ public class IHMListe2 extends JFrame {
     public static void main(String[] args){
         new IHMListe2();
     }
+    
 
 }
